@@ -15,5 +15,5 @@ if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ] && \
     [ -n "${INPUT_SPLIT}" ] && \
     {  [ "1" = "${INPUT_SPLIT_ONLY_IF:-1}" ] || [ "https://github.com/${INPUT_SPLIT_ONLY_IF:-1}" = "$ORIGIN" ]; }; then
     git remote add split github:${INPUT_SPLIT}
-    git push -f -u split ${INPUT_SPLIT_BRANCH:-split}:master
+    git push -f -u split ${INPUT_SPLIT_BRANCH:-split}:${INPUT_SPLIT_BRANCH:-split}
 fi
