@@ -3,7 +3,7 @@
 ssh-keyscan github.com > /root/.ssh/known_hosts
 
 if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ]; then
-    echo "${INPUT_SPLIT_DEPLOY_KEY}" >> /root/.ssh/github
+    echo "${INPUT_SPLIT_DEPLOY_KEY}" > /root/.ssh/github
     chmod 0600 /root/.ssh/github
 fi
 
