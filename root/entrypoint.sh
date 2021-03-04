@@ -17,3 +17,5 @@ if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ] && \
     git remote add split github:${INPUT_SPLIT}
     git push -f -u split ${INPUT_SPLIT_BRANCH:-split}:${INPUT_SPLIT_BRANCH:-split}
 fi
+
+git remote rm split
