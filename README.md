@@ -1,4 +1,4 @@
-Splitsh-lite Github action
+Splitsh-lite Github Action
 ==========================
 
 Synchronises a split repository using splitsh-lite
@@ -14,7 +14,7 @@ Key                | Description
 ------------------ | -----------------------------------------------------------
 `split` *          | Subtree repository name (including owner)
 `split_deploy_key` | The private key part of a Deploy Key on the split repository
-`split_branch`     | Branch name to split
+`split_branch`     | Branch name to split (default `main`)
 `split_prefix`     | The directory to perform the split on
 `split_only_if`    | (`0`, `1` or repository name, default `1`) Pushes only if the origin is this, or `1`
 

@@ -7,7 +7,7 @@ if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ]; then
     chmod 0600 /root/.ssh/github
 fi
 
-splitsh-lite --prefix="${INPUT_SPLIT_PREFIX}" --target=refs/heads/${INPUT_SPLIT_BRANCH:-split} --scratch
+splitsh-lite --prefix="${INPUT_SPLIT_PREFIX}" --target=refs/heads/${INPUT_SPLIT_BRANCH:-main} --scratch
 
 ORIGIN=`git remote get-url origin`
 
@@ -15,7 +15,7 @@ if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ] && \
     [ -n "${INPUT_SPLIT}" ] && \
     {  [ "1" = "${INPUT_SPLIT_ONLY_IF:-1}" ] || [ "https://github.com/${INPUT_SPLIT_ONLY_IF:-1}" = "$ORIGIN" ]; }; then
     git remote add split github:${INPUT_SPLIT}
-    git push -f -u split ${INPUT_SPLIT_BRANCH:-split}:${INPUT_SPLIT_BRANCH:-split}
+    git push -f -u split ${INPUT_SPLIT_BRANCH:-main}:${INPUT_SPLIT_BRANCH:-main}
 fi
 
 git remote rm split
