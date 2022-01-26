@@ -1,15 +1,12 @@
-FROM ubuntu:18.04
-
-MAINTAINER Antal Áron <antalaron@antalaron.hu>
+FROM alpine:3.15
 
 COPY root /root
 
-RUN apt-get update && \
-    apt-get install -y \
-        git \
-        wget && \
-    rm -rf /var/lib/apt/lists/* && \
+RUN apk add --no-cache git git-lfs wget bash openssh tar && \
+    git lfs install && \
     wget https://github.com/splitsh/lite/releases/download/v1.0.1/lite_linux_amd64.tar.gz && \
-    tar -zxpf lite_linux_amd64.tar.gz --directory /usr/local/bin/
+    tar -zxpf lite_linux_amd64.tar.gz --directory /usr/local/bin/ && \
+    rm -rf /var/lib/apt/lists/* 
+
 
 ENTRYPOINT ["/root/entrypoint.sh"]

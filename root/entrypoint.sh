@@ -9,6 +9,9 @@ fi
 
 splitsh-lite --prefix="${INPUT_SPLIT_PREFIX}" --target=refs/heads/${INPUT_SPLIT} --scratch
 
+ls -la /usr/local/bin/
+ls -la /usr/bin/
+
 ORIGIN=`git remote get-url origin`
 
 if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ] && \

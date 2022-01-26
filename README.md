@@ -23,27 +23,31 @@ The * indicates mandatory input.
 Example usage
 -------------
 
+Origin: https://github.com/robsonalvesnogueira/splitsh-main-repo  
+Mirror: https://github.com/robsonalvesnogueira/splitsh-mirror-repo
+
+
 ```yaml
 name: Release Split
 
 on: [ push ]
 
 jobs:
-    release:
-        runs-on: ubuntu-latest
-        steps:
-            -
-                name: Checkout
-                uses: actions/checkout@v2
-                with:
-                    fetch-depth: 0
-            -
-                name: Release
-                uses: antalaron/action-splitsh@master
-                with:
-                    split: 'owner/sub-repo'
-                    split_deploy_key: ${{ secrets.GITHUB_SSH_KEY }}
-                    split_prefix: 'src/sub-repo/'
+  splitsh:
+    name: ⏩ Update Module Repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout Sources
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: ⏩ Run Splitsh
+        uses: jackmakiyama/action-splitsh@master
+        with:
+          split: robsonalvesnogueira/splitsh-mirror-repo
+          split_deploy_key: ${{ secrets.SSH_KEY }}
+          split_prefix: 'src/my-package-to-split/'
+          split_branch: main
 ```
 
 License
